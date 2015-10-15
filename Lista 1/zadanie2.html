@@ -1,0 +1,61 @@
+<!DOCTYPE html
+PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>XHTML 1.0 Transitional</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <div>test1.1</div>
+    <div>test1.2</div>
+    
+    <br/>
+    
+    <span>test2.1</span>
+    <span>test2.2</span>
+
+    <br/> <br/>
+    <h3>A teraz właściwe zadanie :-)</h3>
+    
+    <p> Lorem ipsum dolor </p>
+          <!-- Nic innego nie można dodać -->      
+    <div> 
+      <p>sit amet,</p>
+      <div>consectetur adipiscing elit,</div>
+      <span>sed do eiusmod</span>
+      <pre>tempor incididunt</pre>
+      <h1>ut labore et</h1>
+      <h2>dolore magna aliqua.</h2>
+      <strong>Ut enim ad</strong>
+        <!-- wszystkie dozwolone -->
+    </div>
+    <span>
+      <strong>minim veniam, quis</strong>
+	<!-- niedozwolone: p, div, span, pre, h1, h2-->
+    </span>
+    <pre>
+      <span>nostrud exercitation ullamco</span>
+      <strong>laboris nisi ut aliquip</strong>
+        <!-- niepoprawne: p, div, pre, h1, h2 -->
+    </pre>
+
+    <h1>
+      <span>ex ea commodo consequat.</span>
+      <strong>Excepteur sint occaecat</strong>
+        <!-- niepoprawne: p, div, pre, h1, h2 -->
+    </h1>
+
+    <h2>
+      <span>dolor in reprehenderit in</span>
+      <strong>voluptate velit esse</strong>
+        <!-- niepoprawne: p, div, pre, h1, h2 -->
+    </h2>
+
+    <strong>
+      <span>cillum dolore eu</span>
+      <strong>fugiat nulla pariatur</strong>
+        <!-- niepoprawne: p, div, pre, h1, h2 -->
+    </strong>  
+  </body>
+</html>
