@@ -1,0 +1,62 @@
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>XHTML 1.0 Transitional</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <style type="text/css">
+        p {
+            /*type*/
+            background-color: blanchedalmond;
+        }
+
+        p span {
+            /*descendant*/
+            border: dotted 2px;
+            background-color: aliceblue;
+        }
+
+        div > span {
+            /*child*/
+            border: groove 2px blue;
+        }
+
+        div + h1 {
+            /*adjacent*/
+            border: dotted 2px;
+            text-align: left;
+        }
+
+        #my_txt {
+
+            color: olive;
+        }
+
+        .class {
+            /*class*/
+            width: 200px;
+            background-color: burlywood;
+        }
+    </style>
+</head>
+<body>
+    <p>To jest dla 'p'</p>
+
+    <p>
+        <span>Tst dla ze 'span'</span>
+    </p>
+
+    <span>to jest ze span</span>
+
+    <div>
+        <span>To jest dla 's z 'div'</span>
+    </div>
+
+    <div id="my_txt">'id'</div>
+
+    <h1>h1 po div</h1>
+
+    <p class="class">'class'</p>
+</body>
+</html>
