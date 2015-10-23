@@ -1,0 +1,8 @@
+a:link { color: indianred}
+a:visited { color: darkorange }
+a:hover { color: bisque}
+    /*najechanie myszką*/
+a:active { color: greenyellow}
+    /*podczas kliknięcia*/
+a:focus {color: lightsteelblue}
+    /*zaznaczenie z klawiatury*/
