@@ -1,0 +1,217 @@
+$mainBackgroundColor: #ebebeb
+$contentBackgroundColor: #c3c7c8
+
+html
+  background-color: $mainBackgroundColor
+
+body
+  font-size: 10px
+  font-family: Arial, Helvetica, sans-serif
+  background-color: $mainBackgroundColor !important
+  background-image: none !important
+
+a
+  text-decoration: none
+  color: #000
+
+.page-container
+  background-color: $mainBackgroundColor
+  border: none
+
+#container
+  border: 0
+  width: 913px
+  margin: 0 auto
+  padding-top: 20px
+
+#mainArea
+  width: 913px
+  height: 322px
+
+//#mainArea  select {font-size: 13px; font-family:Arial, Helvetica, Sans-Serif;}
+
+#headerBanner
+  height: 50px
+  position: relative
+  margin-bottom: 20px
+  line-height: 27px
+  border-radius: 10px
+  background: linear-gradient(to right, $mainBackgroundColor, $contentBackgroundColor)
+
+#header
+  position: absolute
+  width: 750px
+  top: 0
+  left: 0
+  padding: 10px
+  font-size: 25px
+  font-weight: bold
+  color: #666
+
+#logo
+  width: 115px
+  height: 16px
+  position: absolute
+  top: 18px
+  right: 30px
+
+#vg_container
+  float: left
+  width: 646px
+  height: 252px
+  background: $contentBackgroundColor
+  border-radius: 6px
+
+#main_volvoGroup
+  margin: 0
+  position: relative
+  padding: 20px 15px 6px 30px
+  a
+    font-size: 16px
+    font-weight: bold
+    color: #666
+    margin: 0
+
+#main_volvoGroupSelect
+  select
+    width: 250px
+
+.entrySubLinks
+  position: relative
+  left: 173px
+  height: 0
+  overflow: hidden
+
+#mainVolvoBAs
+  padding: 0 10px 0 13px
+  z-index: 3000
+  position: relative
+
+#entires
+  display: inline
+  padding: 0
+
+.entryWrap
+  margin-top: 10px
+  position: relative
+  width: 196px
+  height: 82px
+  float: left
+  list-style: none
+  display: inline
+  padding: 0 8px 0 0
+  a
+    cursor: pointer
+  li
+    width: 196px
+    height: 82px
+    display: inline
+    //margin: 20px
+
+
+.entry
+  width: 100%
+  height: 100%
+  border: 1px solid #FFFFFF
+  border-radius: 4px
+  .entryLink
+    height: 18px
+    cursor: pointer
+  &:hover
+    div
+      box-shadow: inset 0 0 0 999px rgba(255,255,255, 0.45)
+      opacity: 1
+
+@for $i from 1 through 6
+  #entry#{$i}
+    @extend .entry
+    background-image: url("img/entry0#{$i}.jpg")
+
+.locationContainer
+  height: 65px
+  box-shadow: none
+  opacity: 0
+
+.selectLocation
+  position: relative
+  margin-top: 15%
+  margin-left: 50%
+  text-align: center
+  transform: translate(-50%, 0)
+
+#vc_container
+  height: 252px
+  width: 245px
+  padding-left: 14px
+  float: left
+  background: $contentBackgroundColor
+  border-radius: 6px
+  margin-left: 8px
+  div
+    height: 40px
+    position: relative
+  .entryWrap
+    width: 233px
+    height: 185px
+  .entryObj
+    width: 228px
+    height: 180px
+    background-position: -207px 0
+  .entryLink
+    width: 221px
+    height: 175px
+    background-position: 0 0
+
+.entryImg
+  border: 1px solid #FFFFFF
+  border-radius: 4px
+
+#main_vccLink
+  font-size: 1.6em
+  font-weight: bold
+  color: #666
+  position: absolute
+  bottom: 5px
+  left: 15px
+  white-space: pre
+  line-height: 27px
+
+.bannerArea
+  clear: both
+  margin-top: 6px
+  display: block
+  position: relative
+  text-align: center
+  font-size: 1.4em
+
+.banner-area-text
+  position: relative
+  height: 0
+
+.banner-area-text-inside
+  position: absolute
+  top: -20px
+  color: #f8f8f8
+  z-index: 3100
+  cursor: pointer
+  font-size: 14px
+  margin-left: 28px
+
+#introText
+  p
+    text-align: center
+    font-size: 13px
+    margin-top: 15px
+    line-height: 1.6em
+
+footer
+  text-align: center
+  font-size: 1.1em
+  color: #6b6b6b
+  margin-top: 20px
+  div
+    display: inline
+  a
+    color: #6b6b6b
+    padding: 0 .7em
+    display: inline

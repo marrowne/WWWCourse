@@ -1,0 +1,218 @@
+//Defaults
+
+*
+  margin: 0
+  padding: 0
+
+div, article, section, header, footer, nav, figure, li
+  position: relative
+
+.group:after
+  display: block
+  height: 0
+  font-size: 0
+  clear: both
+  visibility: hidden
+
+=box-sizing($arg)
+  -moz-box-sizing: $arg
+  -webkit-box-sizing: $arg
+  box-sizing: $arg
+
+*
+  +box-sizing(border-box)
+
+//Typography
+
+body, input, textarea
+  color: #333
+
+body
+  font-family: 'Averia Gruesa Libre', sans-serif
+
+h2, h3
+  font-family: 'Capriola', sans-serif
+
+h1, h2, h3, h4, h5, h6
+  font-weight: normal
+
+h1
+  background: #ea2e49
+  color: #fff
+  border-radius: 10px
+  display: inline-block
+  margin-bottom: 1em
+  padding: 0.5em 1em
+
+h2
+  color: #fff
+  font-weight: 900
+  /* Heavy
+  font-size: 6em
+  letter-spacing: 1px
+  line-height: 1em
+
+h3
+  font-size: 2.25em
+  font-weight: 200
+  /* Thin
+  letter-spacing: 1px
+  line-height: 1em
+  padding: 0.5em 0 0.25em 0
+
+section.intro header h2
+  text-shadow: 0px -3px 2px rgba(150, 150, 150, 0.75)
+
+=transition($arg)
+  -moz-transition: $arg
+  -webkit-transition: $arg
+  transition: $arg
+
+a
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2)
+  color: #333
+  text-decoration: none
+  +transition(border-color 0.2s ease-in-out)
+  &:hover
+    border-color: #ea2e49
+    background-color: rgba(132, 36, 0, 0.8)
+    color: #ffffff !important
+
+section.intro div.summary p a
+  color: #fff
+
+div
+  &.explanation p a
+    color: #fff
+  &.participation p a
+    color: #fff
+    &:hover
+      border-color: #fff
+
+p, li
+  font-size: 1em
+  font-weight: 400
+  line-height: 1.5em
+  padding: 0.5em 0
+
+h1, section.intro div.summary p, div.requirements p:last-child
+  font-weight: 300
+  letter-spacing: 2px
+  text-transform: uppercase
+
+section.intro div.summary p:last-child, div.requirements p:last-child
+  border-top: 1px solid #daede2
+  margin-top: 1em
+  padding-top: 1.5em
+
+em, strong
+  font-style: normal
+  font-weight: 400
+
+//Layout
+
+html
+  background: #949494
+  padding: 5%
+
+body
+  background: #77c4d3
+
+div.page-wrapper
+  z-index: 2
+
+section.intro
+  padding: 5%
+  div
+    &.summary
+      color: #fff
+      padding: 15% 0
+    &.preamble
+      background: rgba(255, 255, 255, 0.9)
+      color: #333
+      margin-left: -30%
+      padding: 5% 5% 5% 30%
+
+div.main
+  padding: 5%
+
+aside.sidebar
+  background: rgb(246, 247, 146)
+  opacity: 0.8
+  padding: 5%
+  transition-duration: 1s
+  ul
+    padding: 0.5em 0 2em 0
+    li
+      color: rgba(0, 0, 0, 0.4)
+      list-style: none
+      margin: 0
+      padding: 0 0 0.825em 0
+
+footer
+  background: rgba(246, 247, 146, 0.9)
+  clear: both
+  color: #fff
+  padding: 1em 5%
+  width: 50%
+  a
+    margin-right: 0.5em
+
+div
+  &.explanation
+    color: #fff
+    padding: 5%
+  &.participation
+    background: rgba(234, 46, 73, 0.9)
+    color: #fff
+    padding: 5%
+  &.benefits
+    background: rgba(209, 255, 158, 0.9)
+    margin-top: 10%
+    padding: 5%
+  &.requirements
+    background: rgba(255, 255, 255, 0.9)
+    padding: 5%
+
+aside:hover.sidebar
+  opacity: 1
+
+section.intro header
+  border-radius: 10px
+
+@media screen
+  body
+    font-size: 85%
+
+@media screen
+  h2
+    font-size: 5em
+  section.intro
+    width: 66.6%
+  aside.sidebar
+    position: absolute
+    right: 0
+    top: 2.5%
+    width: 32.75%
+  div
+    &.extra1
+      background: linear-gradient(to right, rgba(234, 46, 73, 0.9), rgba(255, 103, 103, 0.9))
+      bottom: 0
+      right: 0
+      position: fixed
+      top: 0
+      width: 30%
+      z-index: 1
+    &.explanation
+      width: 50%
+    &.participation
+      width: 49%
+
+@media screen
+  div
+    &.benefits
+      margin: 10%
+    &.requirements
+      width: 69%
+  body
+    font-size: 100%
