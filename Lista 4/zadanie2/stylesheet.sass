@@ -1,0 +1,66 @@
+body
+  margin: 0
+  padding: 0
+  background-color: #000000
+  background-image: none
+  color: #ffffff
+
+.contents
+  display: inline-block
+  text-align: left
+
+table.cell
+  border-spacing: 1px
+  background-color: #666666
+  color: #000000
+  cursor: default
+  user-select: none
+  -moz-user-select: none
+  -webkit-user-select: none
+
+td
+  &.cell, &.score
+    margin: 0
+    border: 3px solid
+    border-color: #eeeeee #999999 #999999 #eeeeee
+    background-color: #cccccc
+    padding: 0
+    vertical-align: middle
+    text-align: center
+  &.cell
+    width: 30px
+    padding-top: 1px
+    padding-bottom: 1px
+    font-size: 20px
+    font-weight: bold
+    line-height: 28px
+
+@mixin counter ($v-margin, $h-margin)
+  div.counter
+    margin: $v-margin $h-margin $v-margin $h-margin
+    border: 1px inset #eeeeee
+    padding-right: 3px
+    width: 45px
+    background-color: #000000
+    color: #e00000
+    font-size: 24px
+    font-weight: bold
+    line-height: 1
+    text-align: right
+
+@include counter(10px, 80px)
+
+#mines
+  float: left
+
+#timer
+  float: right
+
+#smiley
+  width: 24px
+  height: 24px
+  margin: 2px
+  border: 3px groove #eeeeee
+  padding: 6px
+  vertical-align: middle
+  cursor: pointer

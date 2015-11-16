@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Simple Form</title>
+    <script language="javascript" type="text/javascript">
+
+        var pesel_year;
+        var pesel_month;
+        var pesel_day;
+
+        function peselCheck(pesel) {
+            var regex = /^[0-9]{11}$/;
+            if (regex.test(pesel) == false) {
+                document.getElementById("pesel_info").innerHTML = "<font color=\"red\">PESEL jest nieprawidłowy</font>";
+                return false;
+            }
+            else
+            {
+                var dig = (""+  pesel).split("");
+                var kontrola = (parseInt(dig[0]) + 3*parseInt(dig[1])
+                        + 7*parseInt(dig[2]) + 9*parseInt(dig[3])
+                        + parseInt(dig[4]) + 3*parseInt(dig[5])
+                        + 7*parseInt(dig[6]) + 9*parseInt(dig[7])
+                        + parseInt(dig[8]) + 3*parseInt(dig[9]))%10;
+                if (kontrola==0)
+                    kontrola = 10;
+                kontrola = 10 - kontrola;
+
+                if (parseInt(dig[10]) == kontrola) {
+                    pesel_year = parseInt(pesel.substring(0,2));
+                    pesel_month = parseInt(pesel.substring(2,4));
+                    pesel_day = parseInt(pesel.substring(4,6));
+                    document.getElementById("pesel_info").innerHTML = "PESEL powienien składać się z 11 cyfr";
+                    return true;
+                }
+                document.getElementById("pesel_info").innerHTML = "<font color=\"red\">Proszę poprawić PESEL</font>";
+                return false;
+            }
+        }
+
+    function ifLeap(year) {
+        if ((year % 4 == 0) && (year % 100 != 0) || (year % 400 == 0))
+            return true;
+        return false;
+    }
+
+    function correctDate(day, month, year)
+        {
+            if(day < 1 || month < 1 || year < 1)
+                return false;
+            if((month == 1 || month == 3 || month == 5 || month == 7 ||
+                    month == 8 || month == 10 || month == 12)
+                    &&  (day < 32))
+                return true;
+            if ((month == 4 || month == 6 || month == 9 || month == 11) &&
+                    (day < 31))
+                return true;
+            if(month != 2)
+                return false;
+            if (ifLeap(year)) {
+                if (day < 30)
+                    return true;
+            }
+            else if(day < 29)
+                return true;
+            return false;
+        }
+
+
+    function mailCheck(mail) {
+        var testEmail = /^([A-Za-z0-9_.\-]*)+@+([A-Za-z0-9\-]*)+(\.[a-z]*)/;
+        var wynik = mail.match(testEmail);
+        if (wynik == null) {
+            document.getElementById("email_info").innerHTML = "<font color=\"red\">E-mail jest nieprawidłowy</font>";
+            return false;
+        }
+        else {
+            document.getElementById("email_info").innerHTML = "np. przyklad@domena.pl";
+            return true;
+        }
+
+    }
+
+    function dateCheck(date) {
+        if (date.match(/^([0-9]{2}(.|-)[0-9]{2}(.|-)[0-9]{4})/)) {
+            var day = parseInt(date.substring(0,2),10);
+            var month = parseInt(date.substring(3,5),10);
+            var year = parseInt(date.substring(8,10),10);
+            if (!correctDate(day, month, year)) {
+                document.getElementById("bdate_info").innerHTML = "<font color=\"red\">Zła data</font>";
+                return false;
+            }
+            if(pesel_year==year && pesel_month==month && pesel_day==day){
+                document.getElementById("bdate_info").innerHTML = "dd.mm.rrrr lub dd-mm-rrr";
+                return true;
+            }
+            else{
+                document.getElementById("bdate_info").innerHTML = "<font color=\"red\">Data musi zgadzac sie z numerem PESEL</font>";
+                return false;
+            }
+        }
+        document.getElementById("bdate_info").innerHTML = "<font color=\"red\">Data jest nieprawidłowa</font>";
+        return false;
+    }
+
+    function cityCheck(val){ //ten select zwraca nam wartości, co jest dla nas fajne, bo jak ta wartość to 0, to wtedy się psuje, w przeciwnym wypadku działa.
+        if(val == "0"){
+            document.getElementById("city_info").innerHTML = "<font color=\"red\">Proszę wybrać miasto</font>";
+            return false;
+        }
+        document.getElementById("city_info").innerHTML = "";
+        return true;
+    }
+
+    function sexCheck() {
+        var x = document.getElementById("m").checked;
+        var y = document.getElementById("k").checked;
+        if(x || y) {
+            document.getElementById("sex_info").innerHTML = "";
+            return true;
+        }
+        document.getElementById("sex_info").innerHTML = "<font color=\"red\">Proszę wybrać płeć</font>";
+        return false;
+    }
+
+    function checkForm() {
+        var errors = false;
+        if (!peselCheck(document.getElementById('Pesel').value))
+            errors = true;
+        if (!mailCheck(document.getElementById('Email').value))
+            errors = true;
+        if (!dateCheck(document.getElementById('Data').value))
+            errors = true;
+        if (!cityCheck(document.getElementById('Miasto').value))
+            errors = true;
+        if (!sexCheck())
+            errors = true;
+        if (errors){
+            document.getElementById("message").innerHTML
+                    = "<b>Błędy w formularzu</b>";
+            return false;
+        }
+        document.getElementById("message").innerHTML
+                = "<b>Dane zapisane</b>";
+        return true;
+    }
+
+    </script>
+</head>
+<body>
+<div id="message"></div>
+<form name="dane" action="#" onsubmit="return checkForm()">
+    <table>
+        <tr><td>PESEL</td>
+            <td><input type="text" name="Pesel" id="Pesel"></td>
+            <td id="pesel_info">PESEL powienien składać się z 11 cyfr</td></tr>
+        <tr><td>E-mail</td>
+            <td><input type="text" name="Email" id="Email"></td>
+            <td id="email_info">np. przyklad@domena.pl</td>
+        </tr>
+        <tr><td>Data urodzenia</td>
+            <td><input type="text" name="Data" id="Data"></td>
+            <td id="bdate_info">dd.mm.rrrr lub dd-mm-rrrr</td>
+        </tr>
+        <tr>
+            <td>Miasto</td>
+            <td>
+                <select name="Miasto" id="Miasto">
+                <option value="0" selected="selected">---</option>
+                <option value="wroclaw">Wrocław</option>
+                <option value="krakow">Kraków</option>
+                <option value="poznan">Warszawa</option>
+                </select></td>
+            <td id="city_info"></td>
+        </tr>
+        <tr><td>Płeć</td>
+            <td><input type="radio" name="Plec" id="m" value="m" /> M
+                <input type="radio" name="Plec" id="k" value="k" /> K</td>
+            <td id="sex_info"></td>
+        </tr>
+        <tr><td colspan="2"><input type="submit" value="Zapisz" /></td></tr>
+    </table>
+</form>
+</body>
+</html>
