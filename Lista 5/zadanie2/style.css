@@ -1,0 +1,45 @@
+* {
+    font-family: Arial, "Free Sans";
+}
+
+#cards {
+    margin: 0 auto;
+    width: 680px;
+    z-index: 1;
+}
+
+#cards div {
+    float: left;
+    width: 152px;
+    height: 215px;
+    background: url("img/card-back.png") no-repeat 0 0;
+
+    cursor: pointer;
+    z-index: 2;
+}
+
+#cards div img {
+    border: none;
+    z-index: 3;
+    height: 215px;
+    margin-left: 1px;
+    width: 150px;
+}
+
+#boxbutton {
+    text-align: center;
+    padding: 20px;
+}
+.link {
+    font-size: 18px;
+    color: #ffffff;
+    text-decoration: none;
+    background: #0066cc;
+    padding: 5px 10px;
+    -webkit-border-radius: .5em;
+    -moz-border-radius: .5em;
+    border-radius: .5em;
+}
+.link:hover {
+    background: #7a9907;
+}
