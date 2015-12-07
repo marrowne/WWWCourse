@@ -1,0 +1,20 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>Cookies</title>
+    <script type="text/javascript">
+        function listCookies() {
+            var theCookies = document.cookie.split(';');
+            var aString = '';
+            for (var i = 0 ; i < theCookies.length; i++) {
+                aString += i + ' ' + theCookies[i] + '<br />';
+            }
+            document.getElementById("cookies").innerHTML = aString;
+        }
+    </script>
+</head>
+<body onload="listCookies()">
+    <div id="cookies">Cookies</div>
+</body>
+</html>
