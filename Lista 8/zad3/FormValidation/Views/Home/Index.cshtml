@@ -1,0 +1,18 @@
+﻿@model FormValidation.Models.Samochod
+@{
+    ViewBag.Title = "Home Page";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary()
+    <table border="1">
+        <tr><td>@Html.LabelFor(e => e.NrRej)</td><td>@Html.EditorFor(e => e.NrRej) @Html.ValidationMessageFor(model => model.NrRej)</td></tr>
+        <tr><td>@Html.LabelFor(e => e.DataRej)</td><td>@Html.EditorFor(e => e.DataRej) @Html.ValidationMessageFor(model => model.DataRej)</td></tr>
+        <tr><td>@Html.LabelFor(e => e.Marka)</td><td>@Html.EditorFor(e => e.Marka) @Html.ValidationMessageFor(model => model.Marka)</td></tr>
+        <tr><td>@Html.LabelFor(e => e.Produkcja)</td><td>@Html.EditorFor(e => e.Produkcja) @Html.ValidationMessageFor(model => model.Produkcja)</td></tr>
+        <tr><td>@Html.LabelFor(e => e.Paliwo)</td><td>@Html.DropDownListFor(m => m.Paliwo, Model.Paliwa, "Proszę wybrać", new { @class = "form-control" }) @Html.ValidationMessageFor(model => model.Paliwo)</td></tr>
+    </table>
+    <input type="submit" />
+    @Html.AntiForgeryToken()
+}
