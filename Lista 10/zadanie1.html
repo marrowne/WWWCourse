@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Google Maps</title>
+    <script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>
+    <style type="text/css">
+        .list {
+            width: 400px;
+            height: 677px;
+            border: groove;
+            float: left;
+            margin: 0 5px 0 0;
+            padding: 10px;
+            overflow: auto;
+        }
+
+        #map {
+            width: 1000px;
+            height: 700px;
+            border: 1px solid black;
+        }
+
+        .entry {
+            margin: 3px 0 3px 0;
+            padding: 10px 0 10px 0;
+            text-align: center;
+            background: #e2e2e2;
+        }
+    </style>
+</head>
+<body onload="initMap()">
+<script type="text/javascript">
+    var entry_id = 0;
+    var markers = [];
+    var infowindow = new google.maps.InfoWindow({
+        content: 'To tutaj!'
+    });
+
+    function addToList(lat, lng) {
+
+        var entry_html = '<div id="' + (entry_id++) + '" class="entry">' +
+                '<div>' + entry_id + '. dł: ' + lat + ' szer: ' + lng + '</div>' +
+                '<div> <button onclick="show(this)">Pokaż</button> <button onclick="removeFromList(this)">Usuń</button> ' +
+                '</div> </div>';
+
+        var d1 = document.getElementById('latLongList');
+        d1.insertAdjacentHTML('beforeend', entry_html);
+
+    }
+
+    function show(elem) {
+        var id = elem.parentNode.parentNode.getAttribute('id');
+
+        var marker = markers[Number(id)];
+        infowindow.open(map, marker);
+    }
+
+    function removeFromList(elem) {
+        var id = elem.parentNode.parentNode.getAttribute('id');
+
+        markers[Number(id)].setMap(null);
+
+        var p = elem.parentNode.parentNode;
+        p.parentNode.removeChild(p);
+    }
+
+    function initMap() {
+        // Create a map object and specify the DOM element for display.
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: {lat: 51.109960, lng: 17.031868},
+            scrollwheel: true,
+            zoom: 13
+        });
+
+
+        google.maps.event.addListener(map, "dblclick", function (event) {
+            var latitude = event.latLng.lat();
+            var longitude = event.latLng.lng();
+
+            addToList(latitude, longitude);
+
+            var marker = new google.maps.Marker({
+                position: {lat: latitude, lng: longitude},
+                map: map
+            });
+
+            markers.push(marker);
+
+        });
+    }
+</script>
+<div id="latLongList" class="list"></div>
+<div id="map"></div>
+</body>
+</html>
